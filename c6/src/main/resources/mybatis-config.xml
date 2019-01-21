@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+        <!--<setting name="lazyLoadingEnabled" value="true"/>-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
+
+
+
+    <typeAliases>
+        <package name="cn.learnmybatis.chapter6.model" />
+    </typeAliases>
+
+    <typeHandlers>
+        <!--<typeHandler javaType="cn.learnmybatis.chapter6.model.Enabled" handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>-->
+        <typeHandler javaType="cn.learnmybatis.chapter6.model.Enabled2" handler="cn.learnmybatis.chapter6.model.Enabled2TypeHandler"/>
+    </typeHandlers>
+    
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <property name="" value=""/>
+            </transactionManager>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/learnmybatis"/>
+                <property name="username" value="root"/>
+                <property name="password" value="yfxu"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="cn/learnmybatis/chapter6/CountryMapper.xml"/>
+        <mapper resource="cn/learnmybatis/chapter6/SysPrivilegeMapper.xml"/>
+        <mapper resource="cn/learnmybatis/chapter6/SysRoleMapper.xml"/>
+        <mapper resource="cn/learnmybatis/chapter6/SysRoleMapper2.xml"/>
+        <mapper resource="cn/learnmybatis/chapter6/SysRoleMapper3.xml"/>
+        <mapper resource="cn/learnmybatis/chapter6/SysRolePrivilegeMapper.xml"/>
+        <mapper resource="cn/learnmybatis/chapter6/SysUserMapper.xml"/>
+        <mapper resource="cn/learnmybatis/chapter6/SysUserRoleMapper.xml"/>
+        <mapper resource="cn/learnmybatis/chapter6/PrivilegeMapper.xml"/>
+    </mappers>
+</configuration>

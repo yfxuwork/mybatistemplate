@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.learnmybatis.work.mapper.PadataTwoMapper">
+    
+    <resultMap type="PadataTwo" id="PadataTwoResult">
+        <result property="id"    column="id"    />
+        <result property="zhiweiming"    column="zhiweiming"    />
+        <result property="xinzi"    column="xinzi"    />
+        <result property="gongsiming"    column="gongsiming"    />
+        <result property="didianshijian"    column="didianshijian"    />
+        <result property="zhiweixinxi"    column="zhiweixinxi"    />
+        <result property="gongsixinxi"    column="gongsixinxi"    />
+        <result property="gongsidizhi"    column="gongsidizhi"    />
+    </resultMap>
+	
+	<sql id="selectPadataTwoVo">
+        select id, zhiweiming, xinzi, gongsiming, didianshijian, zhiweixinxi, gongsixinxi, gongsidizhi from padata_two
+    </sql>
+	
+    <select id="selectPadataTwoList" parameterType="PadataTwo" resultMap="PadataTwoResult">
+        <include refid="selectPadataTwoVo"/>
+        <where>  
+            <if test="id != null "> and id = #{id}</if>
+             <if test="zhiweiming != null  and zhiweiming != '' "> and zhiweiming = #{zhiweiming}</if>
+             <if test="xinzi != null  and xinzi != '' "> and xinzi = #{xinzi}</if>
+             <if test="gongsiming != null  and gongsiming != '' "> and gongsiming = #{gongsiming}</if>
+             <if test="didianshijian != null  and didianshijian != '' "> and didianshijian = #{didianshijian}</if>
+             <if test="zhiweixinxi != null  and zhiweixinxi != '' "> and zhiweixinxi = #{zhiweixinxi}</if>
+             <if test="gongsixinxi != null  and gongsixinxi != '' "> and gongsixinxi = #{gongsixinxi}</if>
+             <if test="gongsidizhi != null  and gongsidizhi != '' "> and gongsidizhi = #{gongsidizhi}</if>
+         </where>
+    </select>
+    
+    <select id="selectPadataTwoById" parameterType="Integer" resultMap="PadataTwoResult">
+        <include refid="selectPadataTwoVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertPadataTwo" parameterType="PadataTwo">
+        insert into padata_two
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null  ">id,</if>
+			<if test="zhiweiming != null  and zhiweiming != ''  ">zhiweiming,</if>
+			<if test="xinzi != null  and xinzi != ''  ">xinzi,</if>
+			<if test="gongsiming != null  and gongsiming != ''  ">gongsiming,</if>
+			<if test="didianshijian != null  and didianshijian != ''  ">didianshijian,</if>
+			<if test="zhiweixinxi != null  and zhiweixinxi != ''  ">zhiweixinxi,</if>
+			<if test="gongsixinxi != null  and gongsixinxi != ''  ">gongsixinxi,</if>
+			<if test="gongsidizhi != null  and gongsidizhi != ''  ">gongsidizhi,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null  ">#{id},</if>
+			<if test="zhiweiming != null  and zhiweiming != ''  ">#{zhiweiming},</if>
+			<if test="xinzi != null  and xinzi != ''  ">#{xinzi},</if>
+			<if test="gongsiming != null  and gongsiming != ''  ">#{gongsiming},</if>
+			<if test="didianshijian != null  and didianshijian != ''  ">#{didianshijian},</if>
+			<if test="zhiweixinxi != null  and zhiweixinxi != ''  ">#{zhiweixinxi},</if>
+			<if test="gongsixinxi != null  and gongsixinxi != ''  ">#{gongsixinxi},</if>
+			<if test="gongsidizhi != null  and gongsidizhi != ''  ">#{gongsidizhi},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updatePadataTwo" parameterType="PadataTwo">
+        update padata_two
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="zhiweiming != null  and zhiweiming != ''  ">zhiweiming = #{zhiweiming},</if>
+            <if test="xinzi != null  and xinzi != ''  ">xinzi = #{xinzi},</if>
+            <if test="gongsiming != null  and gongsiming != ''  ">gongsiming = #{gongsiming},</if>
+            <if test="didianshijian != null  and didianshijian != ''  ">didianshijian = #{didianshijian},</if>
+            <if test="zhiweixinxi != null  and zhiweixinxi != ''  ">zhiweixinxi = #{zhiweixinxi},</if>
+            <if test="gongsixinxi != null  and gongsixinxi != ''  ">gongsixinxi = #{gongsixinxi},</if>
+            <if test="gongsidizhi != null  and gongsidizhi != ''  ">gongsidizhi = #{gongsidizhi},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deletePadataTwoById" parameterType="Integer">
+        delete from padata_two where id = #{id}
+    </delete>
+	
+    <delete id="deletePadataTwoByIds" parameterType="String">
+        delete from padata_two where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

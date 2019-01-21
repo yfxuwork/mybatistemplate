@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <typeAliases>
+        <package name="cn.learnmybatis.work.domain" />
+    </typeAliases>
+    
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <property name="" value=""/>
+            </transactionManager>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://120.79.34.63:3306/rysh"/>
+                <property name="username" value="meibbc"/>
+                <property name="password" value="07fa533360d9"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--<mapper resource="cn/learnmybatis/chapter4/CountryMapper.xml"/>-->
+        <!--<mapper resource="cn/learnmybatis/chapter4/SysPrivilegeMapper.xml"/>-->
+        <!--<mapper resource="cn/learnmybatis/chapter4/SysRoleMapper.xml"/>-->
+        <!--<mapper resource="cn/learnmybatis/chapter4/SysRolePrivilegeMapper.xml"/>-->
+        <!--<mapper resource="cn/learnmybatis/chapter4/SysUserMapper.xml"/>-->
+        <!--<mapper resource="cn/learnmybatis/chapter4/SysUserRoleMapper.xml"/>-->
+        <!--<mapper resource="cn/learnmybatis/chapter4/PrivilegeMapper.xml"/>-->
+
+        <mapper resource="cn/learnmybatis/work/mapper/PadataTwoMapper.xml"/>
+    </mappers>
+</configuration>
